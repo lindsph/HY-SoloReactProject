@@ -1,0 +1,17 @@
+h1, h2 {
+  text-transform: uppercase; }
+
+ul {
+  margin: 0;
+  padding: 0; }
+
+li {
+  list-style: none; }
+
+input[type=text] {
+  border: none; }
+
+input[type=submit] {
+  border: none;
+  font-style: italic;
+  background-color: white; }
