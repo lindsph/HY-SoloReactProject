@@ -19,19 +19,39 @@ class GroceryItem extends React.Component {
         this.state = {
             items: [],
             item: '',
+            checked: false
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
+    handleChecked(e) {
+        if(this.state.checked !== e.target.checked) {
+            this.setState ({
+                checked: e.target.checked
+            });
+        }
+    }
+
+    removeItem(keyToRemove) {
+        // point to the key for each GroceryItem
+        firebase.database().ref(`groceryList/${this.props.title}/${keyToRemove}`).remove();
+
+        // want to on click/check of the checkbox remove the item from the page and from firebase
+    }
 
     handleChange(e) {
         // console.log(e.target.name);
         // console.log(e.target.value);
+
+        // event listener on checkbox, grab the key related to the li, call .remove() function?
+
+
         this.setState({
-            [e.target.name] : e.target.value
+            [e.target.name] : e.target.value,
         })
     }
+    // end of handleChange()
 
     componentDidMount() {
         const dbRef = firebase.database().ref(`groceryList/${this.props.title}`);
@@ -41,6 +61,7 @@ class GroceryItem extends React.Component {
             // shows object (unique key), and value of foodItem, and completed false
             // console.log(snapshot.val());
             const data = snapshot.val();
+            // console.log(data);
 
             // empty array to push the data from teh for in loop that comes back from firebase
             const groceryListArray = [];
@@ -49,18 +70,33 @@ class GroceryItem extends React.Component {
 
             for (let item in data) {
                 // unique key created by firebase
-                // console.log(item);
+                // console.log(`key ${item}`);
 
                 // gives back object associated with that unique key
                 // console.log(data[item]);
 
-                // data[item].key = item;
+                // gives back value associated with the object, ie: berry
+                // console.log(data[item].value);
+
+                // puts onto the object the key (unique firebase key)
+                data[item].key = item;
 
                 groceryListArray.push(data[item]);
-            }
-        })
 
+                // gives back an array as the for in loop iterates through and adds the value from firebase of each object
+                // console.log(groceryListArray)
+            }
+            // end of for in loop
+            
+            this.setState({
+                items: groceryListArray
+            });
+            // showing arrays for each category and items inside for those that have been submitted
+            // console.log(this.state.items);
+        });
+        // end of dbRef on value
     }
+    // end of componentDidMount()
 
     handleSubmit(e) {
         e.preventDefault();
@@ -70,7 +106,6 @@ class GroceryItem extends React.Component {
         // using state in component, creating a new object 
         const groceryList = {
             value: this.state.item,
-            completed: false
         }
 
         const dbRef = firebase.database().ref(`groceryList/${this.props.title}`);
@@ -83,9 +118,9 @@ class GroceryItem extends React.Component {
             item: ''
         });
     }
+    // end of handleSubmit()
 
     render() {
-
         return (
             <form action="" onSubmit={this.handleSubmit}>
                 <h2>{this.props.title}</h2>
@@ -93,7 +128,15 @@ class GroceryItem extends React.Component {
                     {this.state.items.map((foodItem) => {
                         // returns object with value of berry, completed false
                         // console.log(foodItem);
-                        return <li>{foodItem.value}</li>
+                        return (
+                            <div className="groceryItem" key={foodItem.key}>
+                                <input
+                                type="checkbox"
+                                name="completed"
+                                onChange={() => this.removeItem(foodItem.key) }/>
+                                <li>{foodItem.value}</li>
+                            </div>
+                        )
                     })}
                 </ul>
                 <div>
