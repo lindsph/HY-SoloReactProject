@@ -139,7 +139,7 @@ class GroceryItem extends React.Component {
                         )
                     })}
                 </ul>
-                <div>
+                <div className="inputField">
                     <input 
                     type="text" 
                     placeholder="What do you need to buy?" 

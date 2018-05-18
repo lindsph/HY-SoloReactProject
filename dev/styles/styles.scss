@@ -3,11 +3,16 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 html {
-    font-size: 62.5%;
+    font-size: 1vw;
 }
 
 h1, h2 {
     text-transform: uppercase;
+}
+
+h1 {
+    font-size: 10vh;
+    text-align: center;
 }
 
 ul {
@@ -28,3 +33,22 @@ input[type=submit] {
     font-style: italic;
     background-color: white;
 }
+
+form {
+    width: 25%;
+}
+
+.hero {
+    height: 100vh;
+}
+
+.wrapper {
+    max-width: 85%;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+

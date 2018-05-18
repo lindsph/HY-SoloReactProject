@@ -13,9 +13,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="wrapper">
+      <div>
+        <div className="hero">
         <h1>All out of</h1>
-        <div>
+        </div>
+        <div className="wrapper">
             {this.state.listItems.map((groceryCategory, index) => {
               return <GroceryItem 
               title={groceryCategory} 
