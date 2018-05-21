@@ -145,8 +145,8 @@ class GroceryItem extends React.Component {
                                 <input
                                 type="checkbox"
                                 name="completed"
-                                className="checkbox"
                                 onChange={() => this.removeItem(foodItem.key) }/>
+                                <label htmlFor="check"></label>
                                 <li>{foodItem.value}</li>
                             </div>
                         )
