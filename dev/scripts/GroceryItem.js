@@ -19,10 +19,12 @@ class GroceryItem extends React.Component {
         this.state = {
             items: [],
             item: '',
-            checked: false
+            checked: false,
+            focused: false
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.focus = this.focus.bind(this);
     }
 
     handleChecked(e) {
@@ -53,7 +55,17 @@ class GroceryItem extends React.Component {
     }
     // end of handleChange()
 
+    focus() {
+        this.setState({
+            focused : !this.state.focused
+            })
+    }
+    // end of focus()
+
     componentDidMount() {
+        this.input.addEventListener('focus', this.focus);
+        this.input.addEventListener('blur', this.focus);
+
         const dbRef = firebase.database().ref(`groceryList/${this.props.title}`);
 
 
@@ -133,6 +145,7 @@ class GroceryItem extends React.Component {
                                 <input
                                 type="checkbox"
                                 name="completed"
+                                className="checkbox"
                                 onChange={() => this.removeItem(foodItem.key) }/>
                                 <li>{foodItem.value}</li>
                             </div>
@@ -141,13 +154,16 @@ class GroceryItem extends React.Component {
                 </ul>
                 <div className="inputField">
                     <input 
+                    className="input-focused"
+                    ref={input => this.input = input}
+                    className={['input', this.state.focused && 'input-focused'].join(' ')}
                     type="text" 
-                    placeholder="What do you need to buy?" 
+                    autoComplete="off"
                     onChange={this.handleChange} 
                     name='item'
                     value={this.state.item}
                     />
-                    <input type="submit" value="Add"/>
+                    <button><i class="fas fa-plus"></i></button>
                 </div>
             </form>
         )
