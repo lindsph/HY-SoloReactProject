@@ -37,8 +37,11 @@ class GroceryItem extends React.Component {
 
     removeItem(keyToRemove) {
         // point to the key for each GroceryItem
-        firebase.database().ref(`groceryList/${this.props.title}/${keyToRemove}`).remove();
 
+        window.setTimeout(() => {
+            firebase.database().ref(`groceryList/${this.props.title}/${keyToRemove}`).remove();
+        }, 800)
+        
         // want to on click/check of the checkbox remove the item from the page and from firebase
     }
 
@@ -115,8 +118,8 @@ class GroceryItem extends React.Component {
         console.log(this.handleSubmit.value);
 
         // if (this.handleSubmit.value === undefined) {
-            // alert('Do you mean.. no name brand?!')
-        // } else if (this.handleSubmit.value){
+        //     alert('Do you mean.. no name brand?!')
+        // } else {
 
         const itemsClone = Array.from(this.state.items);
         
@@ -129,6 +132,8 @@ class GroceryItem extends React.Component {
 
         dbRef.push(groceryList);
 
+        // }
+        
         // itemsClone.push(groceryList);
         // }
 

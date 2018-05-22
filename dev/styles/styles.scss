@@ -2,10 +2,9 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 .clearfix:after {visibility: hidden; display: block; font-size: 0; content: ''; clear: both; height: 0; }
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-// fix horizontal scroll 
-// delay the checking of the boxes to see the effect
+
+// TO DO
 // disable add symbol if value of fooditem not more than 3 characters
-// why is it targetting the wrong item?
 
 
 html {
@@ -94,7 +93,6 @@ h3 {
     width: 150px;
     padding: 10px;
     margin-top: 10vh;
-
 }
 
 a {
@@ -133,11 +131,14 @@ a {
 }
 
 .input-focused {
-  width: 225px;
+  width: 200px;
 }
 
 input[type=checkbox] {
-  display: none;
+    opacity: 0;
+    position: absolute;
+    width: 20px;
+    height: 20px;
 }
 
 input[type=checkbox] + label:before {
@@ -145,14 +146,15 @@ input[type=checkbox] + label:before {
   border: 0.2rem solid #00987D;
   border-radius: 0.2rem;
   display: inline-block;
-  width: 1rem;
-  height: 0.7rem;
-  padding-left: 0.2rem;
+  width: 15px;
+  height: 15px;
+  padding-left: 0.4rem;
   padding-bottom: 0.3rem;
   margin-right: 0.2rem;
   vertical-align: bottom;
   color: transparent;
-  transition: 1s;
+  transition: 0.7s;
+  z-index:5;
 }
 
 input[type=checkbox] + label:active:before {
