@@ -115,11 +115,11 @@ class GroceryItem extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log(this.handleSubmit.value);
+        // console.log(this.handleSubmit.value);
 
-        // if (this.handleSubmit.value === undefined) {
-        //     alert('Do you mean.. no name brand?!')
-        // } else {
+        if (this.state.item === "") {
+            alert('Do you mean.. no name brand?!')
+        } else {
 
         const itemsClone = Array.from(this.state.items);
         
@@ -132,10 +132,7 @@ class GroceryItem extends React.Component {
 
         dbRef.push(groceryList);
 
-        // }
-        
-        // itemsClone.push(groceryList);
-        // }
+        }
 
         this.setState({
             item: ''
