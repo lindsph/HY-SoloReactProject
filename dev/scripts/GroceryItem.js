@@ -51,7 +51,6 @@ class GroceryItem extends React.Component {
 
         // event listener on checkbox, grab the key related to the li, call .remove() function
 
-
         this.setState({
             [e.target.name] : e.target.value,
         })
@@ -118,7 +117,13 @@ class GroceryItem extends React.Component {
         // console.log(this.handleSubmit.value);
 
         if (this.state.item === "") {
-            alert('Do you mean.. no name brand?!')
+            // swal("Hello world!");
+            swal({
+                title: "Oops!",
+                text: "You gooooottta enter something!",
+                icon: "error",
+                button: "Go back",
+            });
         } else {
 
         const itemsClone = Array.from(this.state.items);
