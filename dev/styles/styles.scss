@@ -4,7 +4,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 
 // fix horizontal scroll 
 // delay the checking of the boxes to see the effect
-// prevent null value from being entered
+// disable add symbol if value of fooditem not more than 3 characters
 // why is it targetting the wrong item?
 
 
@@ -28,7 +28,8 @@ h1 {
 
 h2,
 i.fa-plus,
-li {
+li,
+input[type=text] {
     text-transform: uppercase;
     color: #545C81;
 }
@@ -87,11 +88,12 @@ button {
 }
 
 h3 {
-  text-align: center;  
-  background-color: rgba(0, 152, 125, 0.7);
-  border-radius: 5px;
-  width: 150px;
-  padding: 10px;
+    text-align: center;  
+    background-color: rgba(0, 152, 125, 0.7);
+    border-radius: 5px;
+    width: 150px;
+    padding: 10px;
+    margin-top: 10vh;
 
 }
 
@@ -174,39 +176,6 @@ input[type=checkbox]:checked:disabled + label:before {
   border-color: #00987D;
 }
 
-/* Arrow & Hover Animation */
-// #more-arrows {
-//     width: 75px;
-//     height: 70px;
-//     position: absolute;
-//     bottom: 0;
-//     right: 47.5%;
-  
-//   &:hover {
-//     polygon {
-//       fill: #00987D;
-//       transition: all .2s ease-out;
-
-//       &.arrow-bottom {
-//         transform: translateY(-18px);
-//       }
-
-//       &.arrow-top {
-//         transform: translateY(18px);
-//       }
-      
-//     }
-  
-//   }
-  
-// }
-
-// polygon {
-//   fill: #00987D;
-//   transition: all .2s ease-out;
-	 
-// }
-
 .groceryItem {
     display: flex;
     padding: 5px;
@@ -229,17 +198,24 @@ input[type=checkbox]:checked:disabled + label:before {
 
 @media only screen and (max-width: 600px) {
 
+    h1 {
+        font-size: 5vh;
+        padding: 25px;
+    }
+
+
+    h3,
     h2,
+    i.fa-plus,
     li,
-    i.fa-plus {
-    font-size: 2vw;
+    input {
+        font-size: 2.5vh;
     }
 
     form {
         width: 50%;
-        text-align: center;
     }
-    }
+}
 
 @media only screen and (max-width: 400px) {
 

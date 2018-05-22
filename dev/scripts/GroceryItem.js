@@ -46,7 +46,7 @@ class GroceryItem extends React.Component {
         // console.log(e.target.name);
         // console.log(e.target.value);
 
-        // event listener on checkbox, grab the key related to the li, call .remove() function?
+        // event listener on checkbox, grab the key related to the li, call .remove() function
 
 
         this.setState({
@@ -112,8 +112,13 @@ class GroceryItem extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        console.log(this.handleSubmit.value);
 
-        // const itemsClone = Array.from(this.state.items);
+        // if (this.handleSubmit.value === undefined) {
+            // alert('Do you mean.. no name brand?!')
+        // } else if (this.handleSubmit.value){
+
+        const itemsClone = Array.from(this.state.items);
         
         // using state in component, creating a new object 
         const groceryList = {
@@ -125,10 +130,12 @@ class GroceryItem extends React.Component {
         dbRef.push(groceryList);
 
         // itemsClone.push(groceryList);
+        // }
 
         this.setState({
             item: ''
         });
+        
     }
     // end of handleSubmit()
 
@@ -145,7 +152,10 @@ class GroceryItem extends React.Component {
                                 <input
                                 type="checkbox"
                                 name="completed"
-                                onChange={() => this.removeItem(foodItem.key) }/>
+                                className="checkbox"
+                                id="check"
+                                onChange={() => this.removeItem(foodItem.key) }
+                                />
                                 <label htmlFor="check"></label>
                                 <li>{foodItem.value}</li>
                             </div>
