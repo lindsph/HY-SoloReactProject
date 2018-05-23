@@ -25,6 +25,7 @@ class GroceryItem extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.focus = this.focus.bind(this);
+        // this.logout = this.logout.bind(this);
     }
 
     handleChecked(e) {
@@ -68,10 +69,11 @@ class GroceryItem extends React.Component {
         this.input.addEventListener('focus', this.focus);
         this.input.addEventListener('blur', this.focus);
 
-        const dbRef = firebase.database().ref(`groceryList/${this.props.title}`);
+        this.dbRef = firebase.database().ref(`groceryList/${this.props.title}`);
 
 
-        dbRef.on('value', (snapshot) => {
+
+        this.dbRef.on('value', (snapshot) => {
             // shows object (unique key), and value of foodItem, and completed false
             // console.log(snapshot.val());
             const data = snapshot.val();
@@ -111,6 +113,10 @@ class GroceryItem extends React.Component {
         // end of dbRef on value
     }
     // end of componentDidMount()
+
+    loginWithGoogle() {
+
+    }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -180,7 +186,7 @@ class GroceryItem extends React.Component {
                     name='item'
                     value={this.state.item}
                     />
-                    <button><i class="fas fa-plus"></i></button>
+                    <button><i className="fas fa-plus"></i></button>
                 </div>
             </form>
         )
