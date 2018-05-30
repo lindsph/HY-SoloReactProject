@@ -34,11 +34,12 @@ header {
 
 .hero {
     position: relative;
-    top: 10%;
+    top: 15%;
     background-color: $transparentTeal;
     transform: skewY(-7deg);
     transform-origin: top left;
     filter: drop-shadow(-5px -8px 11px #c3c3c3);
+    margin-bottom: 50px;
 }
 
 .login {
@@ -71,6 +72,16 @@ button.logoutButton {
     float: right;
 }
 
+h3 {
+    display: flex;
+    justify-content: center;
+    color: $teal;
+    @include fontSize(40);
+    margin-top: 20px;
+    font-style: italic;
+}
+
+
 // landing page styles end
 
 .wrapper {
@@ -92,7 +103,6 @@ input[type=text] {
 }
 
 h2,
-h3,
 li,
 input,
 button {
@@ -122,7 +132,7 @@ input[type=text] {
 }
 
 form {
-    width: 25%;
+    min-width: 25%;
 }
 
 li {
@@ -133,15 +143,6 @@ button.add {
     border: 0;
     cursor: pointer;
     background-color: transparent;
-}
-
-h3 {
-    text-align: center;  
-    background-color: rgba(0, 152, 125, 0.7);
-    border-radius: 5px;
-    width: 150px;
-    padding: 10px;
-    margin-top: 10vh;
 }
 
 a {
@@ -157,7 +158,7 @@ a {
   border-radius: 4px;
   padding: 10px;
   width: 150px;
-  background-color: #dddddd;
+  background-color: $beige;
 }
 
 .input-focused {

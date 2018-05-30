@@ -77,6 +77,8 @@ class App extends React.Component {
         {this.state.loggedIn === true ? 
         <main>
           <button className="logoutButton" onClick={this.logout}>Logout</button>
+          <h3>Add items to your grocery list</h3>
+          <div className="border"></div>
           <div className="wrapper">
               {this.state.listItems.map((groceryCategory, index) => {
                 return <GroceryItem 

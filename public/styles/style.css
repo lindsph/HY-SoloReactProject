@@ -131,6 +131,14 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+@media only screen and (max-width: 1300px) {
+  form {
+    width: 33.33%; } }
+
+@media only screen and (max-width: 1150px) {
+  form {
+    width: 50%; } }
+
 @media only screen and (max-width: 800px) {
   .input {
     width: 80px; }
@@ -139,20 +147,20 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 
 @media only screen and (max-width: 600px) {
   h1 {
-    font-size: 5vh;
+    font-size: 25px;
+    font-size: 2.5rem;
     padding: 25px; }
   h3,
   h2,
   i.fa-plus,
   li,
   input {
-    font-size: 2.5vh; }
+    font-size: 25px;
+    font-size: 2.5rem; }
   form {
-    width: 50%; } }
+    width: 100%; } }
 
 @media only screen and (max-width: 400px) {
-  form {
-    width: 100%; }
   .input {
     width: 50px; }
   .input-focused {
@@ -183,11 +191,12 @@ header {
 
 .hero {
   position: relative;
-  top: 10%;
+  top: 15%;
   background-color: rgba(0, 152, 125, 0.7);
   transform: skewY(-7deg);
   transform-origin: top left;
-  filter: drop-shadow(-5px -8px 11px #c3c3c3); }
+  filter: drop-shadow(-5px -8px 11px #c3c3c3);
+  margin-bottom: 50px; }
 
 .login {
   display: flex;
@@ -215,6 +224,15 @@ button.loginButton {
 button.logoutButton {
   float: right; }
 
+h3 {
+  display: flex;
+  justify-content: center;
+  color: #00987D;
+  font-size: 40px;
+  font-size: 4rem;
+  margin-top: 20px;
+  font-style: italic; }
+
 .wrapper {
   max-width: 85%;
   height: 100vh;
@@ -232,7 +250,6 @@ input[type=text] {
   color: #545C81; }
 
 h2,
-h3,
 li,
 input,
 button {
@@ -256,10 +273,10 @@ input[type=text] {
   border: 0;
   outline: 0;
   background: transparent;
-  border-bottom: 1px dotted #dddddd; }
+  border-bottom: 1px dotted #CAC4C0; }
 
 form {
-  width: 25%; }
+  min-width: 25%; }
 
 li {
   margin-bottom: 15px; }
@@ -268,14 +285,6 @@ button.add {
   border: 0;
   cursor: pointer;
   background-color: transparent; }
-
-h3 {
-  text-align: center;
-  background-color: rgba(0, 152, 125, 0.7);
-  border-radius: 5px;
-  width: 150px;
-  padding: 10px;
-  margin-top: 10vh; }
 
 a {
   text-decoration: none;
@@ -289,7 +298,7 @@ a {
   border-radius: 4px;
   padding: 10px;
   width: 150px;
-  background-color: #dddddd; }
+  background-color: #CAC4C0; }
 
 .input-focused {
   width: 200px; }

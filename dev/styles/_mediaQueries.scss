@@ -1,8 +1,23 @@
+@media only screen and (max-width: 1300px) {
+
+    form {
+        width: 33.33%;
+    }
+}
+
+@media only screen and (max-width: 1150px) {
+
+    form {
+        width: 50%;
+    }
+}
+
 @media only screen and (max-width: 800px) {
 
     .input {
         width: 80px;
     }
+
     .input-focused {
         width: 110px;
     }
@@ -11,7 +26,7 @@
 @media only screen and (max-width: 600px) {
 
     h1 {
-        font-size: 5vh;
+        @include fontSize(25);
         padding: 25px;
     }
 
@@ -21,23 +36,22 @@
     i.fa-plus,
     li,
     input {
-        font-size: 2.5vh;
+        @include fontSize(25);
     }
 
-    form {
-        width: 50%;
-    }
-}
-
-@media only screen and (max-width: 400px) {
 
     form {
         width: 100%;
     }
 
+}
+
+@media only screen and (max-width: 400px) {
+
     .input {
         width: 50px;
     }
+
     .input-focused {
         width: 75px;
     }
