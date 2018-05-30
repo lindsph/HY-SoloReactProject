@@ -25,7 +25,6 @@ class GroceryItem extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.focus = this.focus.bind(this);
-        // this.logout = this.logout.bind(this);
     }
 
     handleChecked(e) {
@@ -37,39 +36,28 @@ class GroceryItem extends React.Component {
     }
 
     removeItem(keyToRemove) {
-        // point to the key for each GroceryItem
-
         window.setTimeout(() => {
-            firebase.database().ref(`groceryList/${this.props.title}/${keyToRemove}`).remove();
+            firebase.database().ref(`${this.props.userId}/groceryList/${this.props.title}/${keyToRemove}`).remove();
         }, 800)
-        
-        // want to on click/check of the checkbox remove the item from the page and from firebase
     }
 
     handleChange(e) {
-        // console.log(e.target.name);
-        // console.log(e.target.value);
-
-        // event listener on checkbox, grab the key related to the li, call .remove() function
-
         this.setState({
             [e.target.name] : e.target.value,
         })
     }
-    // end of handleChange()
 
     focus() {
         this.setState({
             focused : !this.state.focused
             })
     }
-    // end of focus()
 
     componentDidMount() {
         this.input.addEventListener('focus', this.focus);
         this.input.addEventListener('blur', this.focus);
 
-        this.dbRef = firebase.database().ref(`groceryList/${this.props.title}`);
+        this.dbRef = firebase.database().ref(`${this.props.userId}/groceryList/${this.props.title}`);
 
 
 
@@ -102,7 +90,6 @@ class GroceryItem extends React.Component {
                 // gives back an array as the for in loop iterates through and adds the value from firebase of each object
                 // console.log(groceryListArray)
             }
-            // end of for in loop
             
             this.setState({
                 items: groceryListArray
@@ -110,12 +97,6 @@ class GroceryItem extends React.Component {
             // showing arrays for each category and items inside for those that have been submitted
             // console.log(this.state.items);
         });
-        // end of dbRef on value
-    }
-    // end of componentDidMount()
-
-    loginWithGoogle() {
-
     }
 
     handleSubmit(e) {
@@ -123,7 +104,6 @@ class GroceryItem extends React.Component {
         // console.log(this.handleSubmit.value);
 
         if (this.state.item === "") {
-            // swal("Hello world!");
             swal({
                 title: "Oops!",
                 text: "You gooooottta enter something!",
@@ -138,19 +118,14 @@ class GroceryItem extends React.Component {
         const groceryList = {
             value: this.state.item,
         }
-
-        const dbRef = firebase.database().ref(`groceryList/${this.props.title}`);
-
+        const dbRef = firebase.database().ref(`${this.props.userId}/groceryList/${this.props.title}`);
         dbRef.push(groceryList);
-
         }
-
         this.setState({
             item: ''
         });
         
     }
-    // end of handleSubmit()
 
     render() {
         return (
@@ -158,10 +133,10 @@ class GroceryItem extends React.Component {
                 <h2>{this.props.title}</h2>
                 <ul>
                     {this.state.items.map((foodItem) => {
-                        // returns object with value of berry, completed false
-                        // console.log(foodItem);
                         return (
-                            <div className="groceryItem" key={foodItem.key}>
+                            <div 
+                            className="groceryItem" 
+                            key={foodItem.key}>
                                 <input
                                 type="checkbox"
                                 name="completed"
@@ -186,7 +161,7 @@ class GroceryItem extends React.Component {
                     name='item'
                     value={this.state.item}
                     />
-                    <button><i className="fas fa-plus"></i></button>
+                    <button className="add"><i className="fas fa-plus"></i></button>
                 </div>
             </form>
         )

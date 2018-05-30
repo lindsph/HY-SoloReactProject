@@ -131,20 +131,98 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+@media only screen and (max-width: 800px) {
+  .input {
+    width: 80px; }
+  .input-focused {
+    width: 110px; } }
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 5vh;
+    padding: 25px; }
+  h3,
+  h2,
+  i.fa-plus,
+  li,
+  input {
+    font-size: 2.5vh; }
+  form {
+    width: 50%; } }
+
+@media only screen and (max-width: 400px) {
+  form {
+    width: 100%; }
+  .input {
+    width: 50px; }
+  .input-focused {
+    width: 75px; } }
+
 html {
-  font-size: 1vw; }
+  font-size: 62.5%; }
 
 body {
   font-family: 'Open Sans', sans-serif;
   background-color: #f5f5f5; }
 
 h1 {
-  font-size: 5.4vw;
+  font-size: 65px;
+  font-size: 6.5rem;
   font-family: 'Calligraffitti', cursive;
-  padding-top: 40px;
+  padding-top: 50px;
   margin: 0;
   text-align: center;
   color: #f5f5f5; }
+
+header {
+  height: 100vh;
+  background-image: url("../images/julien-pianetti-230463-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.hero {
+  position: relative;
+  top: 10%;
+  background-color: rgba(0, 152, 125, 0.7);
+  transform: skewY(-7deg);
+  transform-origin: top left;
+  filter: drop-shadow(-5px -8px 11px #c3c3c3); }
+
+.login {
+  display: flex;
+  justify-content: center; }
+
+button.loginButton,
+button.logoutButton {
+  margin: 10px;
+  padding: 20px;
+  background-color: rgba(0, 152, 125, 0.7);
+  color: #f5f5f5;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  overflow: hidden;
+  transition: 0.3s; }
+  button.loginButton:hover,
+  button.logoutButton:hover {
+    border-radius: 30px; }
+
+button.loginButton {
+  display: flex;
+  justify-content: center; }
+
+button.logoutButton {
+  float: right; }
+
+.wrapper {
+  max-width: 85%;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-left: 50px; }
 
 h2,
 i.fa-plus,
@@ -154,14 +232,20 @@ input[type=text] {
   color: #545C81; }
 
 h2,
-h3 {
-  font-size: 1.5vw; }
+h3,
+li,
+input,
+button {
+  font-size: 25px;
+  font-size: 2.5rem; }
 
 ul {
   margin: 0;
   padding: 0; }
 
 li {
+  font-size: 20px;
+  font-size: 2rem;
   list-style: none;
   font-weight: 400; }
 
@@ -172,7 +256,7 @@ input[type=text] {
   border: 0;
   outline: 0;
   background: transparent;
-  border-bottom: 1px dotted #CAC4C0; }
+  border-bottom: 1px dotted #dddddd; }
 
 form {
   width: 25%; }
@@ -180,21 +264,10 @@ form {
 li {
   margin-bottom: 15px; }
 
-header {
-  height: 100vh;
-  background-image: url("../images/julien-pianetti-230463-unsplash.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; }
-
-button {
+button.add {
   border: 0;
   cursor: pointer;
   background-color: transparent; }
-
-.login {
-  display: flex;
-  justify-content: center; }
 
 h3 {
   text-align: center;
@@ -208,23 +281,6 @@ a {
   text-decoration: none;
   cursor: pointer;
   color: #f5f5f5; }
-
-.wrapper {
-  max-width: 85%;
-  height: 100vh;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  padding-left: 50px; }
-
-.hero {
-  position: relative;
-  top: 10%;
-  background-color: rgba(0, 152, 125, 0.7);
-  transform: skewY(-7deg);
-  transform-origin: top left;
-  filter: drop-shadow(-5px -8px 11px #c3c3c3); }
 
 .input {
   transition: width .35s linear;
@@ -246,12 +302,14 @@ input[type=checkbox] {
 
 input[type=checkbox] + label:before {
   content: "\2714";
+  font-size: 15px;
+  font-size: 1.5rem;
   border: 0.2rem solid #00987D;
   border-radius: 0.2rem;
   display: inline-block;
-  width: 15px;
-  height: 15px;
-  padding-left: 0.4rem;
+  width: 20px;
+  height: 20px;
+  padding-left: 1rem;
   padding-bottom: 0.3rem;
   margin-right: 0.2rem;
   vertical-align: bottom;
@@ -280,30 +338,3 @@ input[type=checkbox]:checked:disabled + label:before {
   display: flex;
   padding: 5px;
   max-width: 65%; }
-
-@media only screen and (max-width: 800px) {
-  .input {
-    width: 80px; }
-  .input-focused {
-    width: 110px; } }
-
-@media only screen and (max-width: 600px) {
-  h1 {
-    font-size: 5vh;
-    padding: 25px; }
-  h3,
-  h2,
-  i.fa-plus,
-  li,
-  input {
-    font-size: 2.5vh; }
-  form {
-    width: 50%; } }
-
-@media only screen and (max-width: 400px) {
-  form {
-    width: 100%; }
-  .input {
-    width: 50px; }
-  .input-focused {
-    width: 75px; } }

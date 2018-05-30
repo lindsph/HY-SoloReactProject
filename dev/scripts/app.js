@@ -11,12 +11,14 @@ class App extends React.Component {
       loggedIn: false,
       data: ""
     };
+    this.loginWithGoogle = this.loginWithGoogle.bind(this);
   }
 
   componentDidMount() {
-    this.dbRef = firebase.database().ref(`groceryList/${this.props.title}`);
+    this.dbRef = firebase.database().ref(`${this.state.userId}/groceryList/${this.props.title}`);
 
     firebase.auth().onAuthStateChanged((user) => {
+
       if(user !== null) {
         this.dbRef.on('value', (snapshot) => {
           const data = snapshot.val();
@@ -25,13 +27,13 @@ class App extends React.Component {
           });
         });
         this.setState({
+          userId: user.uid,
           loggedIn: true
         });
-      }
-      // end of if
-      else {
+      } else {
         this.setState({
-          loggedIn: false
+          loggedIn: false,
+          userId: ''
         });
       }
     })
@@ -42,50 +44,52 @@ class App extends React.Component {
 
     firebase.auth().signInWithPopup(provider)
       .then((user) => {
-        // console.log(user);
+        console.log(user.user.uid);
+        const userInfo = user.user.uid;
+        this.setState({
+          userId: userInfo
+        });
       })
       .catch((error) => {
-        // console.log(error);
+        return error;
       })
   }
 
   logout() {
     firebase.auth().signOut();
-    // console.log('signed out');
-    this.dbRef.off();
   }
 
   render() {
     return (
       <div>
+
+        {this.state.loggedIn === false ? 
         <header>
           <div className="hero">
-            <div className="titleBackground"></div>
             <h1>All out of</h1>
           </div>
           <div className="login">
-            {this.state.loggedIn === false ? <button onClick={this.loginWithGoogle}>Login with Google</button> : null}
-            {this.state.loggedIn === true ? <button onClick={this.logout}>Logout</button> : null}
+            <button className="loginButton" onClick={this.loginWithGoogle}>Login with Google</button>
           </div>
         </header>
+          : null}
+
         {this.state.loggedIn === true ? 
         <main>
+          <button className="logoutButton" onClick={this.logout}>Logout</button>
           <div className="wrapper">
               {this.state.listItems.map((groceryCategory, index) => {
                 return <GroceryItem 
                 title={groceryCategory} 
-                handleSubmit={this.handleSubmit} 
-                handleChange={this.handleChange}
-                data={this.state.data} />
+                data={this.state.data} 
+                userId={this.state.userId}/>
               })}
           </div>
-          {/* end of div.wrapper */}
         </main>
         : null }
+
       </div>
-      // end of wrapping div
     )
   }
-  // end of render()
 }
 ReactDOM.render(<App />, document.getElementById('app'));

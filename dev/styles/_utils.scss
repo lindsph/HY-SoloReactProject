@@ -1,0 +1,11 @@
+$whiteSmoke:#f5f5f5;
+$blueyPurple: #545C81;
+$beige: #CAC4C0;
+$beige: #dddddd;
+$teal: #00987D;
+$transparentTeal: rgba(0, 152, 125, 0.7);
+
+@mixin fontSize ($sizeValue) {
+    font-size: $sizeValue * 1px;
+    font-size: $sizeValue/10 * 1rem;
+}

@@ -1,0 +1,44 @@
+@media only screen and (max-width: 800px) {
+
+    .input {
+        width: 80px;
+    }
+    .input-focused {
+        width: 110px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    h1 {
+        font-size: 5vh;
+        padding: 25px;
+    }
+
+
+    h3,
+    h2,
+    i.fa-plus,
+    li,
+    input {
+        font-size: 2.5vh;
+    }
+
+    form {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+
+    form {
+        width: 100%;
+    }
+
+    .input {
+        width: 50px;
+    }
+    .input-focused {
+        width: 75px;
+    }
+}
