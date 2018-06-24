@@ -131,41 +131,6 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-@media only screen and (max-width: 1300px) {
-  form {
-    width: 33.33%; } }
-
-@media only screen and (max-width: 1150px) {
-  form {
-    width: 50%; } }
-
-@media only screen and (max-width: 800px) {
-  .input {
-    width: 80px; }
-  .input-focused {
-    width: 110px; } }
-
-@media only screen and (max-width: 600px) {
-  h1 {
-    font-size: 25px;
-    font-size: 2.5rem;
-    padding: 25px; }
-  h3,
-  h2,
-  i.fa-plus,
-  li,
-  input {
-    font-size: 25px;
-    font-size: 2.5rem; }
-  form {
-    width: 100%; } }
-
-@media only screen and (max-width: 400px) {
-  .input {
-    width: 50px; }
-  .input-focused {
-    width: 75px; } }
-
 html {
   font-size: 62.5%; }
 
@@ -204,7 +169,7 @@ header {
 
 button.loginButton,
 button.logoutButton {
-  margin: 10px;
+  margin-top: 50px;
   padding: 20px;
   background-color: rgba(0, 152, 125, 0.7);
   color: #f5f5f5;
@@ -217,30 +182,24 @@ button.logoutButton {
   button.logoutButton:hover {
     border-radius: 30px; }
 
-button.loginButton {
+.flexContainer {
   display: flex;
-  justify-content: center; }
-
-button.logoutButton {
-  float: right; }
+  justify-content: space-between;
+  max-width: 90%;
+  margin: 0 auto; }
 
 h3 {
-  display: flex;
-  justify-content: center;
   color: #00987D;
   font-size: 40px;
   font-size: 4rem;
-  margin-top: 20px;
   font-style: italic; }
 
 .wrapper {
-  max-width: 85%;
+  max-width: 90%;
   height: 100vh;
   margin: 0 auto;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  padding-left: 50px; }
+  flex-wrap: wrap; }
 
 h2,
 i.fa-plus,
@@ -347,3 +306,51 @@ input[type=checkbox]:checked:disabled + label:before {
   display: flex;
   padding: 5px;
   max-width: 65%; }
+
+@media only screen and (max-width: 1300px) {
+  form {
+    width: 33.33%; } }
+
+@media only screen and (max-width: 1150px) {
+  form {
+    width: 50%; } }
+
+@media only screen and (max-width: 800px) {
+  .input {
+    width: 80px; }
+  .input-focused {
+    width: 110px; } }
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 25px;
+    font-size: 2.5rem;
+    padding: 25px; }
+  h3,
+  h2,
+  i.fa-plus,
+  li,
+  input {
+    font-size: 25px;
+    font-size: 2.5rem; }
+  form {
+    width: 100%; } }
+
+@media only screen and (max-width: 415px) {
+  h1 {
+    font-size: 50px;
+    font-size: 5rem; }
+  button.loginButton {
+    margin-top: 75px; }
+  .input {
+    width: 50px; }
+  .input-focused {
+    width: 75px; } }
+
+@media only screen and (max-width: 320px) {
+  h1 {
+    padding: 15px;
+    font-size: 45px;
+    font-size: 4.5rem; }
+  button.loginButton {
+    padding: 5px; } }
